@@ -19,24 +19,24 @@ DealFlow AI streamlines the entire deal lifecycle:
 ```mermaid
 graph TD
     subgraph Client[Client Tier]
-        UI[Client Tier\nNext.js React Dashboard]
+        UI["Next.js React Dashboard"]
     end
     subgraph Gateway[API Gateway Tier]
-        GW[API Gateway Tier\nNode.js + Express]
+        GW["Node.js + Express"]
     end
-    subgraph AI[AI Service Tier]
-        AI[AI Service Tier\nPython FastAPI + LangGraph]
+    subgraph AISvc[AI Service Tier]
+        AIAPP["Python FastAPI + LangGraph"]
     end
     subgraph Worker[Worker Tier]
-        WK[Worker Tier\nNode.js + BullMQ]
+        WK["Node.js + BullMQ"]
     end
     subgraph Data[Data Tier]
-        PG[PostgreSQL (pgvector)]
-        RD[Redis]
+        PG["PostgreSQL + pgvector"]
+        RD["Redis"]
     end
     UI --> GW
-    GW --> AI
-    AI --> WK
+    GW --> AIAPP
+    AIAPP --> WK
     WK --> PG
     WK --> RD
     GW --> PG
